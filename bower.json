@@ -1,0 +1,19 @@
+{
+  "name": "async",
+  "version": "0.0.0",
+  "homepage": "https://github.com/miukki/async",
+  "authors": [
+    "miukki macbook air <miukki@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "async": "~0.9.0"
+  }
+}

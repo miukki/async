@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="bower_components/async/lib/async.js"></script>
+
+</head>
+<body>
+
+
+<script type="text/javascript">
+var array = []; //prime numbers
+for(var i=0; i+1 <= 10; i ++ ) {
+  if (isprime(i+1)) {
+    array.push(i+1);
+  }
+};
+console.log(array)
+
+function isprime(n){
+  if(n==1) return false;
+  for(d=2; d*d<=n; d++){
+    if(n%d==0)
+      return false;
+    }
+  return true;
+}
+
+
+var arr = [] //8 rundom number
+while(arr.length < 8){
+  var randomnumber=Math.ceil(Math.random()*10)
+  var found=false;
+  for(var i=0;i<arr.length;i++){
+    if(arr[i]==randomnumber){found=true;break}
+  }
+  if(!found)arr[arr.length]=randomnumber;
+}
+
+
+var AsyncSquaringLibrary = {
+  squareExponent: 2,
+  square: function(number, callback){
+    var result = Math.pow(number, this.squareExponent);
+    setTimeout(function(){
+      callback(null, result);
+    }, 200);
+  }
+};
+
+
+async.map(arr, AsyncSquaringLibrary.square.bind(AsyncSquaringLibrary), function(err, results){
+    console.log(results);
+});
+
+
+async.each(arr, function(n, callback){
+  //console.log(n/2);
+}, function(err){
+})
+
+
+async.map(arr, function(n,cb){
+  var text = '';
+  if (n % 3 == 0) {
+    text  += 'on3';
+  }
+  if (n % 5 == 0) {
+    text += 'on5';
+  }
+  cb(null, n + ' ' + text);
+}, function(err, result){
+  console.log(result);
+})
+
+</script>
+
+</body>
+</html>
